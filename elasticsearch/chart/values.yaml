@@ -25,10 +25,6 @@ ingress:
         - elastic-instance.eastus2.cloudapp.azure.com
   hosts:
     - host: elastic-instance.eastus2.cloudapp.azure.com
-      paths: ["/(.*)"]
-  rules:
-  - http:
-      paths:
-      - backend:
-          serviceName: elasticsearch-es-http
-          servicePort: 9200
+      path: "/(.*)"
+      service: elasticsearch-es-http
+      port: 9200

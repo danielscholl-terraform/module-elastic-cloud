@@ -21,19 +21,11 @@ resource "helm_release" "elasticsearch" {
       cert-manager.io/cluster-issuer: letsencrypt-issuer-staging
       nginx.ingress.kubernetes.io/rewrite-target: /$1
       nginx.ingress.kubernetes.io/use-regex: "true"
-    tls:
-      - secretName: https-certificate
-        hosts:
-          - ${var.domain_name}
     hosts:
       - host: ${var.domain_name}
         paths: ["/(.*)"]
-    rules:
-    - http:
-        paths:
-        - backend:
-            serviceName: elasticsearch-es-http
-            servicePort: 9200
+        service: elasticsearch-es-http
+        port: 9200
   EOT
   ]
 }

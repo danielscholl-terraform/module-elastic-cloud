@@ -46,7 +46,7 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "hello-arc.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "hello-arc.name" . }}
+{{- define "elastic-instance.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "elastic-instance.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
