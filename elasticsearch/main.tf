@@ -28,12 +28,8 @@ resource "helm_release" "elasticsearch" {
     hosts:
       - host: ${var.domain_name}
         paths: ["/(.*)"]
-    rules:
-    - http:
-        paths:
-        - backend:
-            serviceName: elasticsearch-es-http
-            servicePort: 9200
+  service:
+    port: 9200
   EOT
   ]
 }
