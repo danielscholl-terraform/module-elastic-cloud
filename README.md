@@ -108,6 +108,23 @@ kubectl port-forward service/kibana-kb-http 5601
 
 
 <!--- BEGIN_TF_DOCS --->
+## Providers
 
+| Name | Version |
+|------|---------|
+| helm | >=2.4.1 |
 
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:-----:|
+| additional\_yaml\_config | yaml config for helm chart to be processed last | `string` | `""` | no |
+| elasticsearch | Elastic Search instances configured | <pre>map(object({<br>    agent_pool = string<br>    node_count = number<br>    storage    = number<br>    cpu        = number<br>    memory     = number<br>  }))</pre> | n/a | yes |
+| kubernetes\_create\_namespace | create kubernetes namespace | `bool` | `false` | no |
+| name | Name of helm release | `string` | `"elastic-operator"` | no |
+| namespace | Name of namespace where it should be deployed | `string` | `"elastic-system"` | no |
+
+## Outputs
+
+No output.
 <!--- END_TF_DOCS --->
