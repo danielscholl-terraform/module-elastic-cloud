@@ -44,3 +44,15 @@ variable "memory" {
   type        = string
   default     = 8
 }
+
+variable "domain_name" {
+  description = "Fully Qualified Domain Name"
+  type        = string
+  default = ""
+}
+
+variable "ingress" {
+  description = "Enable Ingress"
+  type        = bool
+  default     = false
+}

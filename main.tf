@@ -19,10 +19,6 @@ resource "helm_release" "eck-operator" {
     var.additional_yaml_config
   ]
 
-  # set {
-  #   name  = "nodeSelector.agentpool"
-  #   value = "default"
-  # }
 }
 
 module "elasticsearch" {
@@ -35,9 +31,10 @@ module "elasticsearch" {
   create_namespace = true
   namespace        = each.key
   agent_pool       = each.value.agent_pool
-
-  node_count = each.value.node_count
-  storage    = each.value.storage
-  cpu        = each.value.cpu
-  memory     = each.value.memory
+  node_count       = each.value.node_count
+  storage          = each.value.storage
+  cpu              = each.value.cpu
+  memory           = each.value.memory
+  ingress          = each.value.ingress
+  domain_name      = each.value.domain
 }

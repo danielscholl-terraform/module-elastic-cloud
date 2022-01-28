@@ -33,6 +33,8 @@ variable "elasticsearch" {
     storage    = number
     cpu        = number
     memory     = number
+    domain     = string
+    ingress    = bool
   }))
   default = null
 }
