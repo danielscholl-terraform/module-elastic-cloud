@@ -14,10 +14,15 @@ resource "helm_release" "eck-operator" {
   repository       = local.helm_repository
   create_namespace = var.kubernetes_create_namespace
 
-  set {
-    name  = "nodeSelector.agentpool"
-    value = "default"
-  }
+  values = [
+    yamlencode({}),
+    var.additional_yaml_config
+  ]
+
+  # set {
+  #   name  = "nodeSelector.agentpool"
+  #   value = "default"
+  # }
 }
 
 module "elasticsearch" {
