@@ -23,7 +23,7 @@ resource "helm_release" "elasticsearch" {
       nginx.ingress.kubernetes.io/use-regex: "true"
     hosts:
       - host: ${var.domain_name}
-        paths: ["/(.*)"]
+        paths: /(.*)
         service: elasticsearch-es-http
         port: 9200
   EOT
