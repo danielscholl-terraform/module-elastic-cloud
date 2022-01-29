@@ -24,7 +24,7 @@ resource "helm_release" "elasticsearch" {
     hosts:
       - host: ${var.domain_name}
         paths: /(.*)
-        service: elasticsearch-es-http
+        service: (var.helm_name != null ? var.helm_name : "elasticsearch")-es-http
         port: 9200
   EOT
   ]
