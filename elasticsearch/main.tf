@@ -1,5 +1,9 @@
+locals {
+  name = (var.helm_name != null ? var.helm_name : "elasticsearch")
+}
+
 resource "helm_release" "elasticsearch" {
-  name  = (var.helm_name != null ? var.helm_name : "elasticsearch")
+  name  = local.name
   chart = "${path.module}/chart"
 
   namespace        = var.namespace
@@ -21,11 +25,15 @@ resource "helm_release" "elasticsearch" {
       cert-manager.io/cluster-issuer: letsencrypt-issuer-staging
       nginx.ingress.kubernetes.io/rewrite-target: /$1
       nginx.ingress.kubernetes.io/use-regex: "true"
+    tls:
+    - secretName: https-certificate
+      hosts:
+      - ${var.domain_name}
     hosts:
-      - host: ${var.domain_name}
-        paths: /(.*)
-        service: elasticsearch-es-http
-        port: 9200
+    - host: ${var.domain_name}
+      path: "/(.*)"
+      service: ${local.name}-es-http
+      port: 9200
   EOT
   ]
 }

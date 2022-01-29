@@ -20,11 +20,11 @@ ingress:
     nginx.ingress.kubernetes.io/rewrite-target: /$1
     nginx.ingress.kubernetes.io/use-regex: "true"
   tls:
-    - secretName: https-certificate
-      hosts:
-        - elastic-instance.eastus2.cloudapp.azure.com
+  - secretName: https-certificate
+    hosts:
+    - elastic-instance.eastus2.cloudapp.azure.com
   hosts:
-    - host: elastic-instance.eastus2.cloudapp.azure.com
-      path: /(.*)
-      service: elasticsearch-es-http
-      port: 9200
+  - host: elastic-instance.eastus2.cloudapp.azure.com
+    path: "/(.*)"
+    service: elasticsearch-es-http
+    port: 9200
