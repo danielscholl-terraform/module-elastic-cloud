@@ -15,6 +15,7 @@ No requirements.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | agent\_pool | AgentPool of the cluster | `string` | n/a | yes |
+| cluster\_issuer | Lets Encrypt Cluster Issuer | `string` | `"staging"` | no |
 | cpu | Limit CPU Resources | `string` | `2` | no |
 | create\_namespace | Create the namespace for the instance if it doesn't yet exist | `bool` | `true` | no |
 | domain\_name | Fully Qualified Domain Name | `string` | `""` | no |
