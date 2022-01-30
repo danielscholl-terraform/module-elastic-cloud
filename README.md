@@ -87,6 +87,9 @@ module "elasticcloud" {
       storage    = 128
       cpu        = 2
       memory     = 8
+      ingress    = false
+      domain     = ""
+      issuer     = "staging"
     }
   }
 }

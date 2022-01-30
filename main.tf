@@ -26,6 +26,7 @@ module "elasticsearch" {
 
   source = "./elasticsearch"
 
+
   for_each = (var.elasticsearch == null ? {} : var.elasticsearch)
 
   create_namespace = true
@@ -37,4 +38,5 @@ module "elasticsearch" {
   memory           = each.value.memory
   ingress          = each.value.ingress
   domain_name      = each.value.domain
+  cluster_issuer   = each.value.issuer
 }

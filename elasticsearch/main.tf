@@ -1,5 +1,6 @@
 locals {
-  name = (var.helm_name != null ? var.helm_name : "elasticsearch")
+  name   = (var.helm_name != null ? var.helm_name : "elasticsearch")
+  issuer = "letsencrypt-issuer-${var.cluster_issuer}"
 }
 
 resource "helm_release" "elasticsearch" {
@@ -22,7 +23,7 @@ resource "helm_release" "elasticsearch" {
     enabled: ${var.ingress}
     annotations:
       kubernetes.io/ingress.class: nginx
-      cert-manager.io/cluster-issuer: letsencrypt-issuer-staging
+      cert-manager.io/cluster-issuer: ${local.issuer}
       nginx.ingress.kubernetes.io/rewrite-target: /$1
       nginx.ingress.kubernetes.io/use-regex: "true"
     tls:

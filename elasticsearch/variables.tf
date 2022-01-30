@@ -48,11 +48,17 @@ variable "memory" {
 variable "domain_name" {
   description = "Fully Qualified Domain Name"
   type        = string
-  default = ""
+  default     = ""
 }
 
 variable "ingress" {
   description = "Enable Ingress"
   type        = bool
   default     = false
+}
+
+variable "cluster_issuer" {
+  description = "Lets Encrypt Cluster Issuer"
+  type        = string
+  default     = "staging"
 }

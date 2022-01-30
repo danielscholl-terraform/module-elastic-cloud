@@ -35,6 +35,7 @@ variable "elasticsearch" {
     memory     = number
     domain     = string
     ingress    = bool
+    issuer     = string
   }))
   default = null
 }

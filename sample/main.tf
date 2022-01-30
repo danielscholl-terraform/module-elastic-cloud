@@ -82,6 +82,7 @@ module "elasticcloud" {
       memory     = 8
       ingress    = false
       domain     = ""
+      issuer     = "staging"
     }
   }
 }
